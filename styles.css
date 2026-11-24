@@ -394,8 +394,8 @@ html, body {
 .overlay-text {
   position: absolute;
   left: 50%;
-  bottom: 9%;
-  transform: translateX(-50%);
+  top: 88%;
+  transform: translate(-50%, -50%);
   width: max-content;
   max-width: 84%;
   text-align: center;
@@ -404,14 +404,12 @@ html, body {
   color: #fff8e6;
   text-shadow: 0 1px 3px rgba(0,0,0,0.85);
   word-break: break-word;
-  cursor: grab;
-  touch-action: none;
-  user-select: none;
+  pointer-events: none;
   outline: 1px dashed rgba(255,255,255,0.0);
   transition: outline-color 0.15s;
 }
-.overlay-text:hover { outline-color: rgba(255,255,255,0.5); }
-.overlay-text.dragging { cursor: grabbing; outline-color: rgba(255,255,255,0.8); }
+.overlay-text.dragging { outline-color: rgba(255,255,255,0.8); }
+.modal-image-wrap { cursor: crosshair; touch-action: none; }
 .overlay-text.sticker {
   background: linear-gradient(135deg, var(--gold-light), var(--gold));
   color: #1c130a;
