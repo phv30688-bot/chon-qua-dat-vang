@@ -296,6 +296,42 @@
     updateOverlayPreview();
   }
 
+  // Product photos are cropped very differently from one another, so no
+  // single fixed position lines up with the wooden base/lower frame on every
+  // image. The percentage below is only a starting guess; the customer drags
+  // the text to the exact spot themselves (see drag handlers further down).
+  var dragState = { active: false, wrap: null };
+
+  function clampBottomPercent(pct) {
+    return Math.max(2, Math.min(90, pct));
+  }
+
+  function setOverlayBottomFromPointer(clientY) {
+    var wrap = modalEls.overlayText.parentElement;
+    var rect = wrap.getBoundingClientRect();
+    var pct = ((rect.bottom - clientY) / rect.height) * 100;
+    modalEls.overlayText.style.bottom = clampBottomPercent(pct) + '%';
+  }
+
+  modalEls.overlayText.addEventListener('pointerdown', function (e) {
+    if (!modalEls.overlayText.textContent) return;
+    dragState.active = true;
+    modalEls.overlayText.classList.add('dragging');
+    modalEls.overlayText.setPointerCapture(e.pointerId);
+    setOverlayBottomFromPointer(e.clientY);
+    e.preventDefault();
+  });
+  modalEls.overlayText.addEventListener('pointermove', function (e) {
+    if (!dragState.active) return;
+    setOverlayBottomFromPointer(e.clientY);
+  });
+  function endOverlayDrag() {
+    dragState.active = false;
+    modalEls.overlayText.classList.remove('dragging');
+  }
+  modalEls.overlayText.addEventListener('pointerup', endOverlayDrag);
+  modalEls.overlayText.addEventListener('pointercancel', endOverlayDrag);
+
   // Paintings/photo frames are usually photographed propped on a table, so
   // the lower frame edge sits well above the bottom of the square photo;
   // statues and other objects are typically cropped tight to their wooden
