@@ -152,14 +152,24 @@
  ],
  "budgetTiers": [
   {
-   "key": "under5",
-   "label": "Dưới 5 triệu",
-   "count": 319
+   "key": "under3",
+   "label": "Dưới 3 triệu",
+   "count": 103
   },
   {
-   "key": "5to20",
-   "label": "5 - 20 triệu",
-   "count": 500
+   "key": "3to5",
+   "label": "3 - 5 triệu",
+   "count": 216
+  },
+  {
+   "key": "5to10",
+   "label": "5 - 10 triệu",
+   "count": 363
+  },
+  {
+   "key": "10to20",
+   "label": "10 - 20 triệu",
+   "count": 137
   },
   {
    "key": "20to50",
@@ -173,5 +183,5 @@
   }
  ],
  "total": 999,
- "generatedAt": "2026-11-24T14:31:50.995Z"
+ "generatedAt": "2026-11-24T14:36:16.333Z"
 }
