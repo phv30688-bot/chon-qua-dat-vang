@@ -108,6 +108,36 @@
   <button id="iosHintClose">Đã hiểu</button>
 </div>
 
+<!-- ===== Modal chi tiết sản phẩm ===== -->
+<div id="productModal" class="modal-overlay" hidden>
+  <div class="modal-sheet">
+    <button id="modalCloseX" class="modal-close-x" type="button" aria-label="Đóng">✕</button>
+    <div class="modal-image-wrap">
+      <img id="modalImage" alt="">
+      <div id="modalOverlayText" class="overlay-text engraved"></div>
+    </div>
+    <div class="modal-body">
+      <h3 id="modalTitle" class="modal-title"></h3>
+      <p id="modalPrice" class="modal-price"></p>
+      <p class="modal-vendor">Sản phẩm từ Quà Tặng Dát Vàng.</p>
+
+      <p class="modal-label">Kiểu thể hiện nội dung</p>
+      <div class="style-toggle">
+        <button id="styleEngraved" class="style-btn active" type="button">Khắc bảng</button>
+        <button id="styleSticker" class="style-btn" type="button">Dán tem</button>
+      </div>
+
+      <p class="modal-label">Nội dung khắc / in lên thẻ (tuỳ chọn)</p>
+      <textarea id="customText" class="custom-text" maxlength="60" rows="2" placeholder="VD: Kính chúc Anh Nam sức khoẻ và thành công"></textarea>
+      <p class="char-counter"><span id="charCount">0</span>/60 ký tự</p>
+
+      <a id="modalWebsiteBtn" class="btn-outline" target="_blank" rel="noopener">Xem trên website</a>
+      <button id="modalZaloBtn" class="btn-primary">Đặt qua Zalo</button>
+      <button id="modalCloseBtn" class="btn-text">Đóng</button>
+    </div>
+  </div>
+</div>
+
 <script src="app.js"></script>
 </body>
 </html>

@@ -218,11 +218,10 @@
 
     var frag = document.createDocumentFragment();
     batch.forEach(function (p) {
-      var row = document.createElement('a');
+      var row = document.createElement('button');
+      row.type = 'button';
       row.className = 'result-row';
-      row.href = p.url;
-      row.target = '_blank';
-      row.rel = 'noopener';
+      row.addEventListener('click', function () { openProductModal(p); });
 
       var thumb = document.createElement('div');
       thumb.className = 'result-thumb';
@@ -264,6 +263,86 @@
     });
     list.appendChild(frag);
   }
+
+  // ---------- Modal chi tiết sản phẩm (xem trước khắc/dán tem + đặt qua Zalo) ----------
+  var ZALO_CONTACT = 'https://zalo.me/0904866869';
+  var modalState = { product: null, style: 'engraved' };
+
+  var modalEls = {
+    overlay: document.getElementById('productModal'),
+    image: document.getElementById('modalImage'),
+    overlayText: document.getElementById('modalOverlayText'),
+    title: document.getElementById('modalTitle'),
+    price: document.getElementById('modalPrice'),
+    styleEngraved: document.getElementById('styleEngraved'),
+    styleSticker: document.getElementById('styleSticker'),
+    customText: document.getElementById('customText'),
+    charCount: document.getElementById('charCount'),
+    websiteBtn: document.getElementById('modalWebsiteBtn'),
+    zaloBtn: document.getElementById('modalZaloBtn'),
+    closeBtn: document.getElementById('modalCloseBtn'),
+    closeX: document.getElementById('modalCloseX'),
+  };
+
+  function updateOverlayPreview() {
+    modalEls.overlayText.textContent = modalEls.customText.value.trim();
+    modalEls.overlayText.className = 'overlay-text ' + modalState.style;
+  }
+
+  function setModalStyle(style) {
+    modalState.style = style;
+    modalEls.styleEngraved.classList.toggle('active', style === 'engraved');
+    modalEls.styleSticker.classList.toggle('active', style === 'sticker');
+    updateOverlayPreview();
+  }
+
+  function openProductModal(p) {
+    modalState.product = p;
+    modalEls.image.src = p.image || '';
+    modalEls.image.alt = p.title;
+    modalEls.title.textContent = p.title;
+    modalEls.price.textContent = formatPrice(p.price);
+    modalEls.websiteBtn.href = p.url;
+    modalEls.customText.value = '';
+    modalEls.charCount.textContent = '0';
+    setModalStyle('engraved');
+    modalEls.overlay.hidden = false;
+  }
+
+  function closeProductModal() {
+    modalEls.overlay.hidden = true;
+  }
+
+  modalEls.styleEngraved.addEventListener('click', function () { setModalStyle('engraved'); });
+  modalEls.styleSticker.addEventListener('click', function () { setModalStyle('sticker'); });
+  modalEls.customText.addEventListener('input', function () {
+    modalEls.charCount.textContent = String(modalEls.customText.value.length);
+    updateOverlayPreview();
+  });
+  modalEls.closeBtn.addEventListener('click', closeProductModal);
+  modalEls.closeX.addEventListener('click', closeProductModal);
+  modalEls.overlay.addEventListener('click', function (e) {
+    if (e.target === modalEls.overlay) closeProductModal();
+  });
+
+  modalEls.zaloBtn.addEventListener('click', function () {
+    var p = modalState.product;
+    if (!p) return;
+    var styleLabel = modalState.style === 'sticker' ? 'Dán tem' : 'Khắc bảng';
+    var customText = modalEls.customText.value.trim();
+    var lines = [
+      'Tôi muốn đặt: ' + p.title + ' - ' + formatPrice(p.price),
+      'Kiểu thể hiện: ' + styleLabel,
+    ];
+    if (customText) lines.push('Nội dung khắc/in: ' + customText);
+    lines.push('Link sản phẩm: ' + p.url);
+    var message = lines.join('\n');
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(message).catch(function () {});
+    }
+    window.open(ZALO_CONTACT, '_blank', 'noopener');
+  });
 
   document.getElementById('startBtn').addEventListener('click', function () {
     goTo('occasion');
