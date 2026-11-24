@@ -296,12 +296,22 @@
     updateOverlayPreview();
   }
 
+  // Paintings/photo frames are usually photographed propped on a table, so
+  // the lower frame edge sits well above the bottom of the square photo;
+  // statues and other objects are typically cropped tight to their wooden
+  // base, which sits right at the bottom. This is an approximation (exact
+  // position still varies photo to photo), not a per-image calibration.
+  function overlayBottomFor(productType) {
+    return (productType === 'tranh' || productType === 'khung_anh') ? '22%' : '9%';
+  }
+
   function openProductModal(p) {
     modalState.product = p;
     modalEls.image.src = p.image || '';
     modalEls.image.alt = p.title;
     modalEls.title.textContent = p.title;
     modalEls.price.textContent = formatPrice(p.price);
+    modalEls.overlayText.style.bottom = overlayBottomFor(p.productType);
     modalEls.websiteBtn.href = p.url;
     modalEls.customText.value = '';
     modalEls.charCount.textContent = '0';
