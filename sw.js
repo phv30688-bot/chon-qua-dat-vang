@@ -1,4 +1,4 @@
-var CACHE_VERSION = 'chonqua-v11';
+var CACHE_VERSION = 'chonqua-v12';
 var CORE_ASSETS = [
   './',
   'index.html',
@@ -14,7 +14,9 @@ var CORE_ASSETS = [
 self.addEventListener('install', function (event) {
   event.waitUntil(
     caches.open(CACHE_VERSION).then(function (cache) {
-      return cache.addAll(CORE_ASSETS);
+      return Promise.all(CORE_ASSETS.map(function (path) {
+        return fetch(path, { cache: 'no-store' }).then(function (res) { return cache.put(path, res); });
+      }));
     })
   );
   self.skipWaiting();
@@ -38,24 +40,13 @@ self.addEventListener('fetch', function (event) {
   var url = new URL(req.url);
   var isSameOrigin = url.origin === self.location.origin;
 
-  if (isSameOrigin && url.pathname.indexOf('/data/') !== -1) {
-    // network-first for product data, fallback to cache offline
-    event.respondWith(
-      fetch(req).then(function (res) {
-        var copy = res.clone();
-        caches.open(CACHE_VERSION).then(function (cache) { cache.put(req, copy); });
-        return res;
-      }).catch(function () { return caches.match(req); })
-    );
-    return;
-  }
-
   if (isSameOrigin) {
-    // network-first for the app shell too, so a new deploy is visible on the
-    // very next load instead of waiting for a second reload; cache is only
-    // the offline fallback.
+    // network-first for data AND the app shell, bypassing the browser's own
+    // HTTP cache (cache:'no-store') so a new deploy is never masked by a
+    // cached CSS/JS response even though this handler already "goes to
+    // network" first; cache is only the offline fallback.
     event.respondWith(
-      fetch(req).then(function (res) {
+      fetch(req, { cache: 'no-store' }).then(function (res) {
         var copy = res.clone();
         caches.open(CACHE_VERSION).then(function (cache) { cache.put(req, copy); });
         return res;
