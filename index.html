@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chọn Quà Dát Vàng - V&T Gold</title>
+<meta name="description" content="Chọn nhanh quà tặng dát vàng 24K phù hợp theo đối tượng, dịp tặng và ngân sách.">
+<meta name="theme-color" content="#1c130a">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Chọn Quà">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="app-header">
+  <div class="brand">
+    <img src="icons/icon-192.png" alt="" class="brand-logo">
+    <div>
+      <h1>Chọn Quà Dát Vàng</h1>
+      <p class="brand-sub">V&T Gold · Quà tặng dát vàng 24K</p>
+    </div>
+  </div>
+  <button id="installBtn" class="install-btn" hidden>Cài đặt app</button>
+</header>
+
+<main>
+  <section class="filters" id="filters">
+    <div class="filter-group" data-group="recipients">
+      <h2>Tặng cho ai?</h2>
+      <div class="chips" id="chips-recipients"></div>
+    </div>
+
+    <div class="filter-group" data-group="occasions">
+      <h2>Dịp gì?</h2>
+      <div class="chips" id="chips-occasions"></div>
+    </div>
+
+    <div class="filter-group" data-group="budget">
+      <h2>Ngân sách</h2>
+      <div class="chips" id="chips-budget"></div>
+    </div>
+
+    <div class="filter-group" data-group="productType">
+      <h2>Loại sản phẩm</h2>
+      <div class="chips" id="chips-productType"></div>
+    </div>
+
+    <button id="resetBtn" class="reset-btn">Xoá tất cả bộ lọc</button>
+  </section>
+
+  <section class="results-head">
+    <span id="resultCount">Đang tải...</span>
+  </section>
+
+  <section class="results-grid" id="resultsGrid"></section>
+
+  <p id="emptyState" class="empty-state" hidden>
+    Không tìm thấy quà phù hợp với bộ lọc hiện tại. Hãy thử bỏ một vài tiêu chí.
+  </p>
+</main>
+
+<div id="iosInstallHint" class="ios-hint" hidden>
+  <p>Để cài app vào máy: nhấn nút <strong>Chia sẻ</strong> (biểu tượng ⬆️) trên Safari, sau đó chọn <strong>"Thêm vào màn hình chính"</strong>.</p>
+  <button id="iosHintClose">Đã hiểu</button>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

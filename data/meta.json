@@ -1,0 +1,157 @@
+{
+ "productTypes": [
+  {
+   "key": "tranh",
+   "label": "Tranh",
+   "count": 293
+  },
+  {
+   "key": "tuong",
+   "label": "Tượng",
+   "count": 105
+  },
+  {
+   "key": "mo_hinh_thuyen",
+   "label": "Mô hình thuyền",
+   "count": 22
+  },
+  {
+   "key": "vat_pham_tam_linh",
+   "label": "Vật phẩm tâm linh",
+   "count": 6
+  },
+  {
+   "key": "cay_hoa",
+   "label": "Cây / Hoa",
+   "count": 42
+  },
+  {
+   "key": "bo_tra",
+   "label": "Bộ trà",
+   "count": 9
+  },
+  {
+   "key": "qua_luu_niem",
+   "label": "Quà lưu niệm",
+   "count": 14
+  },
+  {
+   "key": "dong_ho",
+   "label": "Đồng hồ",
+   "count": 6
+  },
+  {
+   "key": "but_ky",
+   "label": "Bút ký",
+   "count": 1
+  },
+  {
+   "key": "bieu_trung",
+   "label": "Biểu trưng",
+   "count": 3
+  },
+  {
+   "key": "khac",
+   "label": "Khác",
+   "count": 191
+  }
+ ],
+ "recipients": [
+  {
+   "key": "sep",
+   "label": "Sếp / Lãnh đạo",
+   "count": 267
+  },
+  {
+   "key": "doitac",
+   "label": "Đối tác / Khách hàng",
+   "count": 309
+  },
+  {
+   "key": "dongnghiep",
+   "label": "Đồng nghiệp / Nhân viên",
+   "count": 132
+  },
+  {
+   "key": "chame",
+   "label": "Cha mẹ / Người thân",
+   "count": 6
+  },
+  {
+   "key": "vochong",
+   "label": "Vợ chồng / Người yêu",
+   "count": 5
+  },
+  {
+   "key": "thayco",
+   "label": "Thầy cô",
+   "count": 1
+  },
+  {
+   "key": "quocte",
+   "label": "Khách quốc tế",
+   "count": 32
+  },
+  {
+   "key": "phatgiao",
+   "label": "Phật tử / Nhà chùa",
+   "count": 19
+  }
+ ],
+ "occasions": [
+  {
+   "key": "khaitruong",
+   "label": "Khai trương",
+   "count": 112
+  },
+  {
+   "key": "tangia",
+   "label": "Tân gia",
+   "count": 154
+  },
+  {
+   "key": "mungtho",
+   "label": "Mừng thọ",
+   "count": 31
+  },
+  {
+   "key": "cuoi",
+   "label": "Cưới hỏi / Kỷ niệm cưới",
+   "count": 29
+  },
+  {
+   "key": "tet",
+   "label": "Tết / Lễ Tết",
+   "count": 2
+  },
+  {
+   "key": "embe",
+   "label": "Mừng bé chào đời",
+   "count": 2
+  }
+ ],
+ "budgetTiers": [
+  {
+   "key": "under5",
+   "label": "Dưới 5 triệu",
+   "count": 184
+  },
+  {
+   "key": "5to20",
+   "label": "5 - 20 triệu",
+   "count": 378
+  },
+  {
+   "key": "20to50",
+   "label": "20 - 50 triệu",
+   "count": 88
+  },
+  {
+   "key": "over50",
+   "label": "Trên 50 triệu",
+   "count": 42
+  }
+ ],
+ "total": 692,
+ "generatedAt": "2026-11-24T13:49:49.478Z"
+}
