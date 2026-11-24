@@ -3,17 +3,17 @@
   {
    "key": "tranh",
    "label": "Tranh",
-   "count": 293
+   "count": 620
   },
   {
    "key": "tuong",
    "label": "Tượng",
-   "count": 105
+   "count": 138
   },
   {
    "key": "mo_hinh_thuyen",
    "label": "Mô hình thuyền",
-   "count": 22
+   "count": 38
   },
   {
    "key": "vat_pham_tam_linh",
@@ -23,7 +23,7 @@
   {
    "key": "cay_hoa",
    "label": "Cây / Hoa",
-   "count": 42
+   "count": 76
   },
   {
    "key": "bo_tra",
@@ -33,17 +33,17 @@
   {
    "key": "qua_luu_niem",
    "label": "Quà lưu niệm",
-   "count": 14
+   "count": 32
   },
   {
    "key": "dong_ho",
    "label": "Đồng hồ",
-   "count": 6
+   "count": 7
   },
   {
    "key": "but_ky",
    "label": "Bút ký",
-   "count": 1
+   "count": 2
   },
   {
    "key": "bieu_trung",
@@ -53,34 +53,34 @@
   {
    "key": "khac",
    "label": "Khác",
-   "count": 191
+   "count": 68
   }
  ],
  "recipients": [
   {
    "key": "sep",
    "label": "Sếp / Lãnh đạo",
-   "count": 267
+   "count": 311
   },
   {
    "key": "doitac",
    "label": "Đối tác / Khách hàng",
-   "count": 309
+   "count": 360
   },
   {
    "key": "dongnghiep",
    "label": "Đồng nghiệp / Nhân viên",
-   "count": 132
+   "count": 242
   },
   {
    "key": "chame",
    "label": "Cha mẹ / Người thân",
-   "count": 6
+   "count": 11
   },
   {
    "key": "vochong",
    "label": "Vợ chồng / Người yêu",
-   "count": 5
+   "count": 6
   },
   {
    "key": "thayco",
@@ -90,39 +90,39 @@
   {
    "key": "quocte",
    "label": "Khách quốc tế",
-   "count": 32
+   "count": 36
   },
   {
    "key": "phatgiao",
    "label": "Phật tử / Nhà chùa",
-   "count": 19
+   "count": 28
   }
  ],
  "occasions": [
   {
    "key": "khaitruong",
    "label": "Khai trương",
-   "count": 112
+   "count": 147
   },
   {
    "key": "tangia",
    "label": "Tân gia",
-   "count": 154
+   "count": 215
   },
   {
    "key": "mungtho",
    "label": "Mừng thọ",
-   "count": 31
+   "count": 37
   },
   {
    "key": "cuoi",
    "label": "Cưới hỏi / Kỷ niệm cưới",
-   "count": 29
+   "count": 37
   },
   {
    "key": "tet",
    "label": "Tết / Lễ Tết",
-   "count": 2
+   "count": 3
   },
   {
    "key": "embe",
@@ -134,24 +134,24 @@
   {
    "key": "under5",
    "label": "Dưới 5 triệu",
-   "count": 184
+   "count": 319
   },
   {
    "key": "5to20",
    "label": "5 - 20 triệu",
-   "count": 378
+   "count": 500
   },
   {
    "key": "20to50",
    "label": "20 - 50 triệu",
-   "count": 88
+   "count": 128
   },
   {
    "key": "over50",
    "label": "Trên 50 triệu",
-   "count": 42
+   "count": 52
   }
  ],
- "total": 692,
- "generatedAt": "2026-11-24T13:49:49.478Z"
+ "total": 999,
+ "generatedAt": "2026-11-24T14:24:55.558Z"
 }
