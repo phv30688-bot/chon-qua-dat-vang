@@ -21,6 +21,11 @@
    "count": 6
   },
   {
+   "key": "khung_anh",
+   "label": "Khung ảnh",
+   "count": 28
+  },
+  {
    "key": "cay_hoa",
    "label": "Cây / Hoa",
    "count": 76
@@ -53,7 +58,7 @@
   {
    "key": "khac",
    "label": "Khác",
-   "count": 68
+   "count": 40
   }
  ],
  "recipients": [
@@ -110,6 +115,11 @@
    "count": 215
   },
   {
+   "key": "sinhnhat",
+   "label": "Sinh nhật",
+   "count": 25
+  },
+  {
    "key": "mungtho",
    "label": "Mừng thọ",
    "count": 37
@@ -125,9 +135,19 @@
    "count": 3
   },
   {
-   "key": "embe",
-   "label": "Mừng bé chào đời",
-   "count": 2
+   "key": "thangchuc",
+   "label": "Thăng chức / Về hưu",
+   "count": 0
+  },
+  {
+   "key": "camondoitac",
+   "label": "Cảm ơn đối tác",
+   "count": 0
+  },
+  {
+   "key": "totnghiep",
+   "label": "Tốt nghiệp",
+   "count": 0
   }
  ],
  "budgetTiers": [
@@ -153,5 +173,5 @@
   }
  ],
  "total": 999,
- "generatedAt": "2026-11-24T14:24:55.558Z"
+ "generatedAt": "2026-11-24T14:31:50.995Z"
 }
