@@ -52,15 +52,21 @@
     <button id="resetBtn" class="reset-btn">Xoá tất cả bộ lọc</button>
   </section>
 
-  <section class="results-head">
-    <span id="resultCount">Đang tải...</span>
+  <button id="ctaBtn" class="cta-btn">Xem gợi ý quà phù hợp</button>
+
+  <section class="results-wrap" id="resultsWrap" hidden>
+    <section class="results-head">
+      <span id="resultCount"></span>
+    </section>
+
+    <section class="results-grid" id="resultsGrid"></section>
+
+    <p id="emptyState" class="empty-state" hidden>
+      Không tìm thấy quà phù hợp với bộ lọc hiện tại. Hãy thử bỏ một vài tiêu chí.
+    </p>
+
+    <button id="loadMoreBtn" class="load-more-btn" hidden>Xem thêm 10 sản phẩm khác</button>
   </section>
-
-  <section class="results-grid" id="resultsGrid"></section>
-
-  <p id="emptyState" class="empty-state" hidden>
-    Không tìm thấy quà phù hợp với bộ lọc hiện tại. Hãy thử bỏ một vài tiêu chí.
-  </p>
 </main>
 
 <div id="iosInstallHint" class="ios-hint" hidden>

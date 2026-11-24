@@ -1,4 +1,4 @@
-var CACHE_VERSION = 'chonqua-v1';
+var CACHE_VERSION = 'chonqua-v2';
 var CORE_ASSETS = [
   './',
   'index.html',

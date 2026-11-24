@@ -1,6 +1,8 @@
 (function () {
   'use strict';
 
+  var PAGE_SIZE = 10;
+
   var state = {
     recipients: new Set(),
     occasions: new Set(),
@@ -8,6 +10,8 @@
     budget: null,
     products: [],
     meta: null,
+    resultsVisible: false,
+    visibleCount: PAGE_SIZE,
   };
 
   var els = {
@@ -16,9 +20,12 @@
     chipsBudget: document.getElementById('chips-budget'),
     chipsProductType: document.getElementById('chips-productType'),
     resetBtn: document.getElementById('resetBtn'),
+    ctaBtn: document.getElementById('ctaBtn'),
+    resultsWrap: document.getElementById('resultsWrap'),
     resultCount: document.getElementById('resultCount'),
     resultsGrid: document.getElementById('resultsGrid'),
     emptyState: document.getElementById('emptyState'),
+    loadMoreBtn: document.getElementById('loadMoreBtn'),
   };
 
   function formatPrice(n) {
@@ -34,14 +41,9 @@
       chip.innerHTML = item.label + '<span class="count">' + item.count + '</span>';
       if (selectedSet.has(item.key)) chip.classList.add('active');
       chip.addEventListener('click', function () {
-        if (multi) {
-          if (selectedSet.has(item.key)) selectedSet.delete(item.key);
-          else selectedSet.add(item.key);
-        } else {
-          if (state.budget === item.key) state.budget = null;
-          else state.budget = item.key;
-        }
-        renderAll();
+        if (selectedSet.has(item.key)) selectedSet.delete(item.key);
+        else selectedSet.add(item.key);
+        onFilterChanged();
       });
       container.appendChild(chip);
     });
@@ -57,10 +59,16 @@
       if (state.budget === item.key) chip.classList.add('active');
       chip.addEventListener('click', function () {
         state.budget = (state.budget === item.key) ? null : item.key;
-        renderAll();
+        onFilterChanged();
       });
       els.chipsBudget.appendChild(chip);
     });
+  }
+
+  function onFilterChanged() {
+    state.resultsVisible = false;
+    state.visibleCount = PAGE_SIZE;
+    renderAll();
   }
 
   function productMatches(p) {
@@ -85,19 +93,36 @@
     return score;
   }
 
-  function renderResults() {
+  function getFiltered() {
     var filtered = state.products.filter(productMatches);
     var anySpecificFilter = state.recipients.size > 0 || state.occasions.size > 0;
     if (anySpecificFilter) {
       filtered = filtered.slice().sort(function (a, b) { return specificity(b) - specificity(a); });
     }
+    return filtered;
+  }
 
-    els.resultCount.textContent = filtered.length + ' sản phẩm phù hợp';
+  function renderResults() {
+    if (!state.resultsVisible) {
+      els.resultsWrap.hidden = true;
+      return;
+    }
+    els.resultsWrap.hidden = false;
+
+    var filtered = getFiltered();
+    var shown = filtered.slice(0, state.visibleCount);
+
+    if (filtered.length === 0) {
+      els.resultCount.textContent = '';
+    } else {
+      els.resultCount.textContent = 'Đang gợi ý ' + shown.length + ' / ' + filtered.length + ' sản phẩm phù hợp';
+    }
     els.resultsGrid.innerHTML = '';
     els.emptyState.hidden = filtered.length > 0;
+    els.loadMoreBtn.hidden = shown.length >= filtered.length;
 
     var frag = document.createDocumentFragment();
-    filtered.forEach(function (p) {
+    shown.forEach(function (p) {
       var a = document.createElement('a');
       a.className = 'card';
       a.href = p.url;
@@ -143,8 +168,25 @@
     state.occasions.clear();
     state.productTypes.clear();
     state.budget = null;
+    state.resultsVisible = false;
+    state.visibleCount = PAGE_SIZE;
     renderAll();
   });
+
+  els.ctaBtn.addEventListener('click', function () {
+    state.resultsVisible = true;
+    state.visibleCount = PAGE_SIZE;
+    renderResults();
+    els.resultsWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  els.loadMoreBtn.addEventListener('click', function () {
+    state.visibleCount += PAGE_SIZE;
+    renderResults();
+  });
+
+  els.ctaBtn.disabled = true;
+  els.ctaBtn.textContent = 'Đang tải dữ liệu...';
 
   Promise.all([
     fetch('data/products.json').then(function (r) { return r.json(); }),
@@ -152,9 +194,11 @@
   ]).then(function (res) {
     state.products = res[0];
     state.meta = res[1];
+    els.ctaBtn.disabled = false;
+    els.ctaBtn.textContent = 'Xem gợi ý quà phù hợp';
     renderAll();
   }).catch(function (err) {
-    els.resultCount.textContent = 'Không tải được dữ liệu sản phẩm.';
+    els.ctaBtn.textContent = 'Không tải được dữ liệu, thử tải lại trang';
     console.error(err);
   });
 
