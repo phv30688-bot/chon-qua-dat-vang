@@ -105,9 +105,14 @@
  ],
  "occasions": [
   {
-   "key": "khaitruong",
-   "label": "Khai trương",
-   "count": 147
+   "key": "sinhnhat",
+   "label": "Sinh nhật",
+   "count": 25
+  },
+  {
+   "key": "cuoi",
+   "label": "Kỷ niệm ngày cưới",
+   "count": 37
   },
   {
    "key": "tangia",
@@ -115,24 +120,29 @@
    "count": 215
   },
   {
-   "key": "sinhnhat",
-   "label": "Sinh nhật",
-   "count": 25
-  },
-  {
-   "key": "mungtho",
-   "label": "Mừng thọ",
-   "count": 37
-  },
-  {
-   "key": "cuoi",
-   "label": "Cưới hỏi / Kỷ niệm cưới",
-   "count": 37
+   "key": "khaitruong",
+   "label": "Khai trương",
+   "count": 147
   },
   {
    "key": "tet",
-   "label": "Tết / Lễ Tết",
+   "label": "Tết Nguyên Đán",
    "count": 3
+  },
+  {
+   "key": "valentine",
+   "label": "Valentine",
+   "count": 0
+  },
+  {
+   "key": "phunu",
+   "label": "8/3 & 20/10",
+   "count": 0
+  },
+  {
+   "key": "totnghiep",
+   "label": "Tốt nghiệp",
+   "count": 0
   },
   {
    "key": "thangchuc",
@@ -145,9 +155,24 @@
    "count": 0
   },
   {
-   "key": "totnghiep",
-   "label": "Tốt nghiệp",
+   "key": "hoinghikh",
+   "label": "Hội nghị khách hàng",
    "count": 0
+  },
+  {
+   "key": "sinhnhatcongty",
+   "label": "Sinh nhật công ty",
+   "count": 0
+  },
+  {
+   "key": "mungtho",
+   "label": "Mừng thọ",
+   "count": 37
+  },
+  {
+   "key": "embe",
+   "label": "Đầy tháng / Thôi nôi",
+   "count": 2
   }
  ],
  "budgetTiers": [
@@ -183,5 +208,5 @@
   }
  ],
  "total": 999,
- "generatedAt": "2026-11-24T14:36:16.333Z"
+ "generatedAt": "2026-11-24T14:56:33.932Z"
 }
