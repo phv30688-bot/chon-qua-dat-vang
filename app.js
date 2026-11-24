@@ -338,10 +338,25 @@
   }
 
   // ---- Service worker ----
+  // updateViaCache:'none' stops the browser's HTTP cache from ever serving a
+  // stale sw.js, and reloading once a new worker takes control makes sure the
+  // visitor always ends up on the latest app shell + data without manual steps.
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('sw.js').catch(function (err) {
+      navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).then(function (reg) {
+        reg.update();
+        document.addEventListener('visibilitychange', function () {
+          if (document.visibilityState === 'visible') reg.update();
+        });
+      }).catch(function (err) {
         console.warn('SW registration failed', err);
+      });
+
+      var reloadedForUpdate = false;
+      navigator.serviceWorker.addEventListener('controllerchange', function () {
+        if (reloadedForUpdate) return;
+        reloadedForUpdate = true;
+        window.location.reload();
       });
     });
   }

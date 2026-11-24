@@ -1,4 +1,4 @@
-var CACHE_VERSION = 'chonqua-v7';
+var CACHE_VERSION = 'chonqua-v8';
 var CORE_ASSETS = [
   './',
   'index.html',
@@ -51,15 +51,15 @@ self.addEventListener('fetch', function (event) {
   }
 
   if (isSameOrigin) {
-    // cache-first for app shell
+    // network-first for the app shell too, so a new deploy is visible on the
+    // very next load instead of waiting for a second reload; cache is only
+    // the offline fallback.
     event.respondWith(
-      caches.match(req).then(function (cached) {
-        return cached || fetch(req).then(function (res) {
-          var copy = res.clone();
-          caches.open(CACHE_VERSION).then(function (cache) { cache.put(req, copy); });
-          return res;
-        });
-      })
+      fetch(req).then(function (res) {
+        var copy = res.clone();
+        caches.open(CACHE_VERSION).then(function (cache) { cache.put(req, copy); });
+        return res;
+      }).catch(function () { return caches.match(req); })
     );
     return;
   }
